@@ -1,31 +1,35 @@
 import discord
 from discord.ext import commands
 from settings import token
+from discord import app_commands
+import os
+
 
 intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
 bot = commands.Bot(command_prefix='!', intents=intents)
 
+async def carregar_cogs():
+    for arquivo in os.listdir('cogs'):
+        if arquivo.endswith('.py'):
+            await bot.load_extension(f'cogs.{arquivo[:-3]}')
+
 @bot.event
 async def on_ready():
+    await carregar_cogs()
+    await bot.tree.sync()
     print('Bot online!')
     print(bot.user.name)
 
 @bot.command()
-async def ola(ctx:commands.Context):
-    usuario = ctx.author
-    await ctx.reply(f'Olá {usuario.display_name}, em que posso ajudar?')
-
-@bot.command()
-async def somar(ctx:commands.Context, num1:float, num2:float):
-    usuario = ctx.author
-    res = num1 + num2
-    await ctx.reply(f'Opa, {usuario.display_name}, a soma dos números informados é: {res}')
-
-@bot.command()
-async def falar(ctx:commands.Context, *,frase):
-    await ctx.send(frase)
+async def sincronizar(ctx: commands.Context):
+    if ctx.author.id == 709868042028449813:
+        server = discord.Object(id=1220578591415210054)
+        sincs = await bot.tree.sync(guild=server)
+        await ctx.reply(f'{len(sincs)} comandos sincronizados')
+    else:
+        await ctx.reply('Apenas o meu criador pode executar esse comando!')
 
 @bot.event
 async def on_guild_channel_create(canal:discord.abc.GuildChannel):
