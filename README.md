@@ -1,3 +1,3 @@
 ## BOT DE GERENCIAMENTO DE SERVIDOR DE DISCORD
 
-![Zabu](https://cdn.discordapp.com/attachments/720813300568293409/1220966811919450172/image.png?ex=6610dcf4&is=65fe67f4&hm=b2aad9f10721dd4c32da4b29b58e50ae5de654d560eecb8bbacf084ac6bf7faa&)
+![Zabu](https://media.discordapp.net/attachments/720813300568293409/1220966811919450172/image.png?ex=663e58b4&is=663d0734&hm=b8dd8123d8ac118ed9e710d04ec0d5e4c894ac474699e64f646f142899430500&=&format=webp&quality=lossless&width=487&height=473)
